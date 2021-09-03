@@ -21,5 +21,6 @@ pipeline
             ansiblePlaybook extras: 'i=${choice}', installation: 'Ansible', playbook: 'loop.yml'
            }
         }  
-     }   
+     } 
+}
         
