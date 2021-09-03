@@ -18,7 +18,7 @@ pipeline
        {
          steps
            {
-            ansiblePlaybook extras: 'i=${choice}', installation: 'Ansible', playbook: 'loop.yml'
+              sh'ansible-playbook -e i=${choice} loop.yml'
            }
         }  
      } 
