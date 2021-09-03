@@ -3,7 +3,7 @@ pipeline
    agent any
    parameters
    {
-    choice(name: 'choice', choices : 'odd\neven\n')
+    choice(name: 'choice', choices : ['odd','even'])
    }
    stages
    {
