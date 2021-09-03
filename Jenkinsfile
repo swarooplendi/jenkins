@@ -11,7 +11,7 @@ pipeline
       {
        steps
          { 
-          git credentialsId: 'git_credential', url: 'https://github.com/swarooplendi/jenkins.git'
+          git credentialsId: 'git_credential', url: 'https://github.com/swarooplendi/ansible.git'
          }
        }
       stage('run ansible')
