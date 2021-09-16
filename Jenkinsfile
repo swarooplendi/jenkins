@@ -39,7 +39,7 @@ pipeline {
             steps {
                 dir('lendiswaroop') {
 			script {
-                    if [ '$BOOLEAN' = 'true' ];then
+                    if ( '$BOOLEAN' = 'true' );then
                         echo true
                     else 
                         echo false
