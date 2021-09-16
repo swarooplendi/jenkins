@@ -38,6 +38,12 @@ pipeline {
         stage('Execute 1.sh') {
             steps {
                 dir('lendiswaroop') {
+			script {
+                    if [ '$BOOLEAN' = 'true' ];then
+                        echo true
+                    else 
+                        echo false
+                }
                         timestamps {
 				 sh("bash -x 1.sh")
                         }
