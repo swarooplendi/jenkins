@@ -41,7 +41,7 @@ pipeline {
 		 sh(returnStdout: true, script: '''#!/bin/bash
             if [ "$BOOLEAN" = true ]
 then
-sh("bash -x 1.sh")
+bash -x 1.sh
 else
 echo "user has selected false"
 fi
