@@ -41,14 +41,12 @@ pipeline {
 		 sh(returnStdout: true, script: '''#!/bin/bash
             if [ "$BOOLEAN" = true ]
 then
-echo "user has selected true"
+sh("bash -x 1.sh")
 else
 echo "user has selected false"
 fi
         '''.stripIndent())
-                        timestamps {
-				 sh("bash -x 1.sh")
-                        }
+                        
                     }
                }          
         }
