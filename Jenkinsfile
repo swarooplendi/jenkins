@@ -98,6 +98,7 @@ fi
              }
           } 
 		stage('capture console output') {
+			steps{
   script {
     def logContent = Jenkins.getInstance().getItemByFullName(env.JOB_NAME).getBuildByNumber(
     Integer.parseInt(env.BUILD_NUMBER)).logFile.text
@@ -110,7 +111,7 @@ fi
   echo '--------------------------------------'
   echo consoleOutput
   echo '--------------------------------------'
-}
+			}}
             
       }
 	
