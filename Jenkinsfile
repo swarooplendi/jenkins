@@ -40,9 +40,7 @@ pipeline {
                 dir('deps') {
                     dir('lendiswaroop') {
                         timestamps {
-				sh("
-                                   bash -x 1.sh
-				   ")
+				 sh("bash -x 1.sh")
                         }
                     }
                 }
