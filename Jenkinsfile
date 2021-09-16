@@ -4,7 +4,6 @@ pipeline
     options 
 	{ 
 		disableConcurrentBuilds()
-		    timeout(time: 1, unit: 'HOURS')
 		    disableResume()   
 	}
     parameters 
@@ -36,7 +35,7 @@ pipeline
               }
          }
 	
-  /*      stage('Execute 1.sh') 
+       stage('Execute 1.sh') 
 		{
             steps 
 			{
@@ -58,7 +57,7 @@ pipeline
                                    }
                        }    
 		
-                }*/
+                }
          
          
 stage('save log build') 
