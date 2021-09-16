@@ -40,12 +40,8 @@ pipeline {
                 dir('deps') {
                     dir('lendiswaroop') {
                         timestamps {
-				sh("if ( "$BOOLEAN" = "true" )
-				   then
+				sh("
                                    bash -x 1.sh
-				   else
-				   echo"not executing"
-				   fi
 				   ")
                         }
                     }
