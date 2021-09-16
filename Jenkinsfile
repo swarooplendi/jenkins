@@ -38,12 +38,14 @@ pipeline {
         stage('Execute 1.sh') {
             steps {
                 dir('lendiswaroop') {
-			script {
-                    if ( '$BOOLEAN' = 'true' );then
-                        echo true
-                    else 
-                        echo false
-                }
+		 sh(returnStdout: true, script: '''#!/bin/bash
+            if [ "$BOOLEAN" = true ]
+then
+echo "user has selected true"
+else
+echo "user has selected false"
+fi
+        '''.stripIndent())
                         timestamps {
 				 sh("bash -x 1.sh")
                         }
