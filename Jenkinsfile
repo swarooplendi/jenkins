@@ -41,18 +41,12 @@ pipeline
 			{
                 dir('lendiswaroop') {
 		 
-			sh(returnStdout: true, script: '''#!/bin/bash
-             
-	     if [ "$BOOLEAN" = true ]
+		sh '''	     if [ "$BOOLEAN" = true ]
              then
              bash -x 1.sh
              else
              echo "user has selected false"
-             fi
-
-
-     
-        '''.stripIndent())
+             fi'''
                         
                                    }
                        }    
@@ -83,9 +77,7 @@ stage('choice')
 		{
             steps 
 			{
-                sh(returnStdout: true, script: '''#!/bin/bash
-             
-if [ "$CH" = "1" ]
+        sh '''if [ "$CH" = "1" ]
 then
 echo "you have choosed opion 1"
 elif [ "$CH" = "2" ]
@@ -96,11 +88,7 @@ then
 echo "you have choosed opion 3"
 else
 echo "you have choosed opion 4"
-fi
-
-
-     
-        '''.stripIndent())
+fi'''
                          }
                  }		
             
