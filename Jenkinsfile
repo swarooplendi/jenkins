@@ -52,7 +52,7 @@ fi
         }
        stage('Choice') {
           steps {
-                dir('lendiswaroop') {
+                
 		 sh(returnStdout: true, script: '''#!/bin/bash
  if [ "$CHOICE" = "a" ]
 then
@@ -68,7 +68,7 @@ echo "you have choosed opion d"
 fi
         '''.stripIndent())
                         
-                    }
+                    
                }  
         }        
         stage('File write') {
