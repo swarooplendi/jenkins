@@ -48,7 +48,10 @@ fi
                         
                     }
                }    
-		steps {
+		
+        }
+       stage('Choice') {
+          steps {
                 dir('lendiswaroop') {
 		 sh(returnStdout: true, script: '''#!/bin/bash
  if [ "$CHOICE" = "a" ]
@@ -67,13 +70,7 @@ fi
                         
                     }
                }  
-        }
- /*       stage('Confirm button') {
-            steps {
-                input 'Please confirm'
-                
-            }
-        }*/        
+        }        
         stage('File write') {
             steps {
                 dir('deps') {
