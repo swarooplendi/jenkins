@@ -27,7 +27,7 @@ pipeline {
         }
         stage('Git checkout') {
             steps {
-                sh "mkdir -p deps/ashvaish deps/lendiswaroop"
+                sh "mkdir -p lendiswaroop"
               
                      dir('lendiswaroop') {
                         checkout([$class: 'GitSCM', branches: [[name: "$STRING2"]], extensions: [], userRemoteConfigs: [[url: "$STRING" ]]])
@@ -37,14 +37,12 @@ pipeline {
         }
         stage('Execute 1.sh') {
             steps {
-                dir('deps') {
-                    dir('lendiswaroop') {
+                dir('lendiswaroop') {
                         timestamps {
 				 sh("bash -x 1.sh")
                         }
                     }
-                }
-            }          
+               }          
         }
  /*       stage('Confirm button') {
             steps {
