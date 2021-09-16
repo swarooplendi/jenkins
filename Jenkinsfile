@@ -5,20 +5,20 @@ pipeline {
 		    disableResume() 
     }
     parameters {
-        string(name: 'STRING_VARIABLE', defaultValue: 'TestTrainer', description: 'Who should I say hello to?')
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        string(name: 'STRING', defaultValue: 'https://gitlab.com/lendiswaroop/assignment1.git', description: 'git url to clone')
+	string(name: 'STRING2', defaultValue: 'main', description: 'branch to clone')
+        booleanParam(name: 'BOOLEAN', defaultValue: true, description: 'do you want to execute shell')
+        choice(name: 'CHOICE', choices: ['1', '2', '3'], description: 'Pick something')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
     }
-    environment {
+  /*  environment {
         def name = "my name"
         def pwdv = ""
         def gitavUrl = 'https://gitlab.com/ashvaish/assignment.git'
         def gitavBranch = 'main'
         def gitswUrl = 'https://gitlab.com/lendiswaroop/assignment1.git'
         def gitswBranch = 'main'        
-    } 
+    } */
     stages {
         stage('Clean Workspace') {
             steps {
@@ -28,16 +28,11 @@ pipeline {
         stage('Git checkout') {
             steps {
                 sh "mkdir -p deps/ashvaish deps/lendiswaroop"
-                dir('deps') {
-                    dir('ashvaish') {
-                        checkout([$class: 'GitSCM', branches: [[name: "$gitavBranch"]], extensions: [], userRemoteConfigs: [[url: "$gitavUrl" ]]])
+              
+                     dir('lendiswaroop') {
+                        checkout([$class: 'GitSCM', branches: [[name: "$STRING2"]], extensions: [], userRemoteConfigs: [[url: "$STRING" ]]])
                     }
-                }
-                dir('deps') {
-                    dir('lendiswaroop') {
-                        checkout([$class: 'GitSCM', branches: [[name: "$gitswBranch"]], extensions: [], userRemoteConfigs: [[url: "$gitswUrl" ]]])
-                    }
-                }                
+                              
             }
         }
         stage('Execute 1.sh') {
@@ -45,18 +40,24 @@ pipeline {
                 dir('deps') {
                     dir('lendiswaroop') {
                         timestamps {
-                            sh("bash -x 1.sh")
+				sh("if ( "$BOOLEAN" = "true" )
+				   then
+                                   bash -x 1.sh
+				   else
+				   echo"not executing"
+				   fi
+				   ")
                         }
                     }
                 }
             }          
         }
-        stage('Confirm button') {
+ /*       stage('Confirm button') {
             steps {
                 input 'Please confirm'
-                //sh("echo asdasdasd")
+                
             }
-        }        
+        }*/        
         stage('File write') {
             steps {
                 dir('deps') {
