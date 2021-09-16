@@ -12,7 +12,7 @@ pipeline
         string(name: 'STRING', defaultValue: 'https://gitlab.com/lendiswaroop/assignment1.git', description: 'git url to clone')
 	string(name: 'STRING2', defaultValue: 'main', description: 'branch to clone')
         booleanParam(name: 'BOOLEAN', defaultValue: true, description: 'do you want to execute shell')
-        choice(name: 'CHOICE', choices: ['1', '2', '3', '4'], description: 'Pick something')
+        choice(name: 'CH', choices: ['1', '2', '3', '4'], description: 'Pick something')
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
         }
 
@@ -42,13 +42,13 @@ pipeline
 			{
                 sh(returnStdout: true, script: '''#!/bin/bash
              
-if [ "$CHOICE" = "a" ]
+if [ "$CH" = "1" ]
 then
 echo "you have choosed opion a"
-elif [ "$CHOICE" = "b" ]
+elif [ "$CH" = "2" ]
 then
 echo "you have choosed opion b"
-elif [ "$CHOICE" = "c" ]
+elif [ "$CH" = "3" ]
 then
 echo "you have choosed opion c"
 else
