@@ -13,7 +13,6 @@ pipeline
 	string(name: 'STRING2', defaultValue: 'main', description: 'branch to clone')
         booleanParam(name: 'BOOLEAN', defaultValue: true, description: 'do you want to execute shell')
         choice(name: 'CH', choices: ['1', '2', '3', '4'], description: 'Pick something')
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
         }
 
     stages 
@@ -36,31 +35,8 @@ pipeline
                                          }
               }
          }
-		stage('choice')
-		{
-            steps 
-			{
-                sh(returnStdout: true, script: '''#!/bin/bash
-             
-if [ "$CH" = "1" ]
-then
-echo "you have choosed opion a"
-elif [ "$CH" = "2" ]
-then
-echo "you have choosed opion b"
-elif [ "$CH" = "3" ]
-then
-echo "you have choosed opion c"
-else
-echo "you have choosed opion d"
-fi
-
-
-     
-        '''.stripIndent())
-            }
-         }
-        stage('Execute 1.sh') 
+	
+  /*      stage('Execute 1.sh') 
 		{
             steps 
 			{
@@ -82,24 +58,15 @@ fi
                                    }
                        }    
 		
-                }
+                }*/
          
-        stage('File write') 
+         
+stage('save log build') 
 		{
-            steps 
+steps 
 			{
-                dir('deps') 
+script 
 				{
-                    dir('ashvaish') 
-					{
-                        writeFile file: 'test-write-file', text: 'asdasdasdasdasd'
-                    }
-                 }
-             }
-          } 
-	stage('save log build') {
-steps {
-script {
 def logContent = Jenkins.getInstance()
 .getItemByFullName(env.JOB_NAME)
 .getBuildByNumber(
@@ -107,9 +74,36 @@ Integer.parseInt(env.BUILD_NUMBER))
 .logFile.text
 // copy the log in the job's own workspace
 writeFile file: "buildlog.txt", text: logContent
-}
-}
-	}
+
+				}
+
+			}
+	          }
+		
+stage('choice')
+		{
+            steps 
+			{
+                sh(returnStdout: true, script: '''#!/bin/bash
+             
+if [ "$CH" = "1" ]
+then
+echo "you have choosed opion 1"
+elif [ "$CH" = "2" ]
+then
+echo "you have choosed opion 2"
+elif [ "$CH" = "3" ]
+then
+echo "you have choosed opion 3"
+else
+echo "you have choosed opion 4"
+fi
+
+
+     
+        '''.stripIndent())
+                         }
+                 }		
             
       }
 	
