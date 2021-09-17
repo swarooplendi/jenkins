@@ -1,0 +1,41 @@
+library identifier: 'library1@master', // The identifier doesn't matter
+				retriever: modernSCM([$class: 'GitSCMSource', remote: "/home/swaroop/shared/library1/"]), // Here we load the library from disk
+				changelog: false // We don't want to see the changelog of the fake repository
+pipeline
+{
+  parameters 
+  {
+        string(name: 'PERSON', defaultValue: 'swaroop', description: 'Who should you send message?')
+        string(name: 'PERSON_TWO', defaultValue: 'gurudath', description: 'Who should I message?')
+  }      
+    agent any
+    stages
+    {
+        stage("hello")
+        {
+            steps
+            {
+               helloWorld(person:"$PERSON",master:"$PERSON_TWO")
+            }
+        }
+    }
+}
+pipeline
+{
+  parameters 
+  {
+        string(name: 'PERSON', defaultValue: 'swaroop', description: 'Who should you send message?')
+        string(name: 'PERSON_TWO', defaultValue: 'gurudath', description: 'Who should I message?')
+  }      
+    agent any
+    stages
+    {
+        stage("hello")
+        {
+            steps
+            {
+               helloWorld(person:"$PERSON",master:"$PERSON_TWO")
+            }
+        }
+    }
+}
