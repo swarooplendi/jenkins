@@ -1,6 +1,5 @@
-library identifier: 'library1@master', // The identifier doesn't matter
-				retriever: modernSCM([$class: 'GitSCMSource', remote: "/home/swaroop/shared/library1/"]), // Here we load the library from disk
-				changelog: false // We don't want to see the changelog of the fake repository
+library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path: './demo'))
+
 pipeline
 {
   parameters 
@@ -11,30 +10,19 @@ pipeline
     agent any
     stages
     {
-        stage("hello")
+         stage("check")
         {
             steps
             {
-               helloWorld(person:"$PERSON",master:"$PERSON_TWO")
-            }
+              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/swarooplendi/jenkins.git']]])
+             }
         }
-    }
-}
-pipeline
-{
-  parameters 
-  {
-        string(name: 'PERSON', defaultValue: 'swaroop', description: 'Who should you send message?')
-        string(name: 'PERSON_TWO', defaultValue: 'gurudath', description: 'Who should I message?')
-  }      
-    agent any
-    stages
-    {
         stage("hello")
         {
             steps
             {
-               helloWorld(person:"$PERSON",master:"$PERSON_TWO")
+               hi(person:"$PERSON",master:"$PERSON_TWO")
+               bye(person:"$PERSON" ,master:"$PERSON_TWO")
             }
         }
     }
