@@ -1,5 +1,6 @@
 //library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path:'/var/lib/jenkins/workspace/dec1/demo'))
-library identifier: 'demo@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '', remote: 'https://github.com/swarooplendi/lib_demo.git', traits: [gitBranchDiscovery()]])
+library identifier: 'demo@master', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '', remote: 'https://github.com/darinpope/github-api-global-lib.git
+', traits: [gitBranchDiscovery()]])
 pipeline
 {
   parameters 
@@ -15,8 +16,9 @@ pipeline
         {
             steps
             {
-               hi(person:"$PERSON",master:"$PERSON_TWO")
-               bye(person:"$PERSON" ,master:"$PERSON_TWO")
+              // hi(person:"$PERSON",master:"$PERSON_TWO")
+              // bye(person:"$PERSON" ,master:"$PERSON_TWO")
+              helloWorld()
             }
         }
     }
