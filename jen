@@ -15,9 +15,9 @@ pipeline
         {
             steps
             {
-              // hi(person:"$PERSON",master:"$PERSON_TWO")
-              // bye(person:"$PERSON" ,master:"$PERSON_TWO")
-              helloWorld()
+               hi(person:"$PERSON",master:"$PERSON_TWO")
+               bye(person:"$PERSON" ,master:"$PERSON_TWO")
+              
             }
         }
     }
