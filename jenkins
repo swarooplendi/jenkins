@@ -1,0 +1,22 @@
+
+library identifier: './vars@main', retriever: modernSCM(
+  [$class: 'GitSCMSource', remote: 'https://github.com/swarooplendi/library.git'])
+pipeline
+{
+  parameters 
+  {
+        string(name: 'PERSON', defaultValue: 'swaroop', description: 'Who should you send message?')
+        string(name: 'PERSON_TWO', defaultValue: 'gurudath', description: 'Who should I message?')
+  }      
+    agent any
+    stages
+    {
+        stage("hello")
+        {
+            steps
+            {
+               helloWorld(person:"$PERSON",master:"$PERSON_TWO")
+            }
+        }
+    }
+}
