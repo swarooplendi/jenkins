@@ -1,4 +1,4 @@
-library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path: './demo'))
+library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path: '/home/swaroop/jenkins/demo'))
 
 pipeline
 {
@@ -10,14 +10,8 @@ pipeline
     agent any
     stages
     {
-         stage("check")
-        {
-            steps
-            {
-              checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/swarooplendi/jenkins.git']]])
-             }
-        }
-        stage("hello")
+     
+     stage("hello")
         {
             steps
             {
