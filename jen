@@ -1,4 +1,4 @@
-library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path:'/var/lib/jenkins/workspace/dec1/demo'))
+library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path:'demo'))
 
 pipeline
 {
