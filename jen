@@ -1,5 +1,5 @@
-library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path:'/var/lib/jenkins/workspace/dec1/demo'))
-
+//library identifier: 'library@master', retriever: legacySCM(filesystem(clearWorkspace: false, copyHidden: false, path:'/var/lib/jenkins/workspace/dec1/demo'))
+library identifier: '', retriever: modernSCM([$class: 'GitSCMSource', credentialsId: '', remote: 'https://github.com/swarooplendi/lib_demo.git', traits: [gitBranchDiscovery()]])
 pipeline
 {
   parameters 
